@@ -5,6 +5,11 @@ class LinkCollection extends Page {
 		'Pages' => 'Page'
 	);
 	
+	public static $defaults = array(
+		'ShowInSearch' => '0',
+		'ShowInMenus' => '1'
+	);
+	
 	public static function map() {
 		$output = new DataObjectSet();
 		$items = DataObject::get('LinkCollection');
