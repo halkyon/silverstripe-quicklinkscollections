@@ -5,6 +5,15 @@ class LinkCollection extends Page {
 		'Pages' => 'Page'
 	);
 	
+	public static function map() {
+		$output = new DataObjectSet();
+		$items = DataObject::get('LinkCollection');
+		if($items && $items->Count() > 0) {
+			$output = $items->map('ID', 'Title');
+		}
+		return $output;
+	}
+	
 	public function getCMSFields() {
 		$fields = parent::getCMSFields();
 		$fields->renameField('Title', 'Collection title');

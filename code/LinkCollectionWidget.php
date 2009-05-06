@@ -13,7 +13,7 @@ class LinkCollectionWidget extends Widget {
 	
 	function getCMSFields() {
 		return new FieldSet(
-			new TreeDropdownField('LinkCollectionID', 'Link collection to show', 'LinkCollection')
+			new DropdownField('LinkCollectionID', 'Link collection to show', LinkCollection::map(), '', null, '(Select a collection)')
 		);
 	}
 	
