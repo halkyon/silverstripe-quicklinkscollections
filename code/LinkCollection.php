@@ -17,8 +17,15 @@ class LinkCollection extends Page {
 	
 	public function getCMSFields() {
 		$fields = parent::getCMSFields();
+		
 		$fields->renameField('Title', 'Collection title');
 		$fields->renameField('MenuTitle', 'Description');
+		
+		$fields->removeByName('Metadata');
+		$fields->removeByName('Sidebar');
+		$fields->removeByName('Widgets');
+		$fields->removeByName('To-do');
+		$fields->removeByName('Reports');
 		
 		return $fields;
 	}
