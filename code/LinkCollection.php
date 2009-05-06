@@ -1,10 +1,6 @@
 <?php
 class LinkCollection extends Page {
 	
-	public static $belongs_many_many = array(
-		'Pages' => 'Page'
-	);
-	
 	public static $defaults = array(
 		'ShowInSearch' => '0',
 		'ShowInMenus' => '1'
@@ -14,7 +10,7 @@ class LinkCollection extends Page {
 		$output = new DataObjectSet();
 		$items = DataObject::get('LinkCollection');
 		if($items && $items->Count() > 0) {
-			$output = $items->map('ID', 'Title');
+			$output = $items->map('ID', 'MenuTitle');
 		}
 		return $output;
 	}
@@ -34,7 +30,9 @@ class LinkCollection extends Page {
 	 * @return string
 	 */
 	public function TreeTitle() {
-		return $this->getField('MenuTitle');
+		$title = $this->getField('MenuTitle');
+		if(!$title) return parent::TreeTitle();
+		return $title;
 	}
 	
 }
