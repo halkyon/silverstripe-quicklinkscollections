@@ -25,6 +25,10 @@ class LinkCollectionHolder extends Page {
 		return $fields;
 	}
 	
+	public function TreeTitle() {
+		return 'Link collection holder';
+	}
+	
 }
 class LinkCollectionHolder_Controller extends Page_Controller {
 	
