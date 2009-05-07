@@ -3,7 +3,7 @@ class LinkCollection extends Page {
 	
 	public static $defaults = array(
 		'ShowInSearch' => '0',
-		'ShowInMenus' => '1'
+		'ShowInMenus' => '0'
 	);
 	
 	public static function map() {
@@ -18,14 +18,18 @@ class LinkCollection extends Page {
 	public function getCMSFields() {
 		$fields = parent::getCMSFields();
 		
-		$fields->renameField('Title', 'Collection title');
-		$fields->renameField('MenuTitle', 'Description');
-		
 		$fields->removeByName('Metadata');
 		$fields->removeByName('Sidebar');
 		$fields->removeByName('Widgets');
 		$fields->removeByName('To-do');
 		$fields->removeByName('Reports');
+		$fields->removeByName('Main');
+		
+		$fields->addFieldsToTab('Root.Content.Main', array(
+			new TextField('Title', 'Collection title (displayed above the link collection on the site)'),
+			new TextField('MenuTitle', 'Description (only shown in the CMS to make it easy to find a particular link collection)'),
+			new HtmlEditorField('Content', 'Content (the content of the link collection)', 15)
+		));
 		
 		return $fields;
 	}

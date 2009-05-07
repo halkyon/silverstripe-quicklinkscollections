@@ -3,7 +3,7 @@ class LinkCollectionHolder extends Page {
 	
 	public static $defaults = array(
 		'ShowInSearch' => '0',
-		'ShowInMenus' => '1'
+		'ShowInMenus' => '0'
 	);
 	
 	public static $default_child = 'LinkCollection';
@@ -16,6 +16,11 @@ class LinkCollectionHolder extends Page {
 		$fields->removeByName('Widgets');
 		$fields->removeByName('To-do');
 		$fields->removeByName('Reports');
+		$fields->removeByName('Main');
+		
+		$fields->addFieldsToTab('Root.Content.Main', array(
+			new HeaderField('LinkColHeader', 'Link collection holder page')
+		));
 		
 		return $fields;
 	}
