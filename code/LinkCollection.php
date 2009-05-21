@@ -19,7 +19,7 @@ class LinkCollection extends Page {
 		$fields = parent::getCMSFields();
 		
 		$fields->removeByName('Metadata');
-		$fields->removeByName('Sidebar');
+		$fields->removeByName('SideBar');
 		$fields->removeByName('Widgets');
 		$fields->removeByName('To-do');
 		$fields->removeByName('Reports');
